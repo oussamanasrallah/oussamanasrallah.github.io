@@ -28,6 +28,7 @@
 							<li><a href="https://www.linkedin.com/in/oussama-nasrallah-895023203" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 							<li><a href="https://github.com/oussamanasrallah/oussamanasrallah.github.io" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 							<li><a href="/images/CV_Oussama_Nasrallah_Dendris.pdf" class="icon fa fa-file">Resume</a></li>
+							<li><a href="/images/Attestation_Oussama-NASRALLAH.pdf" class="icon fa fa-file">Credit</a></li>
 						</ul>
 					</nav>
 
@@ -38,14 +39,29 @@
 							<section class="post">
 								<header class="major">
 									<h1>Breast Cancer</h1>
+									<p>"If it disagrees with experiment, it's wrong. In that simple statement is the key to science."<br>- Richard Feynman</br></p>
 									<p style="text-align:justify">Breast cancer is the most common malignancy among women worldwide[1] and a deadly disease. Breast tumors diagnosis has traditionally been performed by invasive surgical procedures. Besides, the majority of women feel persistent post-surgical pain which may persist for several years. But there is hope.</p>
-									<p style="text-align:justify">Many parameters may be correlated with malignancy and thus incorporated in artificial intelligence solutions for early diagnoses. In oncology, machine learning models play an important role in developing new auxiliary tools for clinicians. With this in mind I searched to use machine learning techniques in this project in order to predict whether the tumor in my dataset is benign or malign. <br></br></p>
+									<p style="text-align:justify">Many parameters may be correlated with malignancy and thus incorporated in artificial intelligence solutions for early diagnoses. In oncology, machine learning models play an important role in developing new auxiliary tools for clinicians. With this in mind I searched to use machine learning techniques in this project in order to predict whether the tumor in my dataset is benign or malignant. <br></br></p>
 									<p style="text-align:justify">[1] Bray F, Ferlay J, Soerjomataram I, et al. Global cancer statistics 2018: GLOBOCAN estimates of incidence and mortality worldwide for 36 cancers in 185 countries. _CA Cancer J Clin_. 2018;68:394–424. doi:10.3322/caac.21492</p>
 								</header>
 								<div class="image main"><img src="images/breast_cancer04.jpg" style= "width:80%; height:80%; margin-left:auto; margin-right:auto"alt="" /></div>
 								<h2>Data exploration</h2>
-								<p style="text-align:justify">First hypothesis: big and asymetric tumors have a greater probability to be malign.</p>
+								<p style="text-align:justify"><u>First hypothesis:</u> big and asymmetric cells have a greater probability to be malignant.</p>
 								<div class="image main"><img src="images/breast_cancer05.jpg" style= "width:60%; height:60%; margin-left:auto; margin-right:auto" alt="" /></div>
+								<p>The plot makes it difficult to determine if symmetric is really a feature worth studying to differentiate benign cells to malignant ones. As for area, it seems bigger cells fall under the malignant category.<br></br></p>
+								<pre>sqlite> SELECT AVG(area_mean), diagnosis FROM data GROUP BY diagnosis;
+								462.790196078432,B
+								978.37641509434,M</pre>
+								
+								<pre>sqlite> SELECT AVG(area_se) FROM data;
+								40.337079086116</pre>
+
+								<pre>sqlite> SELECT AVG(symmetry_mean ), diagnosis FROM data GROUP BY diagnosis;
+								0.174185994397759,B
+								0.192908962264151,M</pre>
+
+								<pre>sqlite> SELECT AVG(symmetry_se) FROM data;
+								0.0205422987697715</pre>
 								
 					</div>
 
